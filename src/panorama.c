@@ -1,6 +1,8 @@
 #include "panorama.h"
 
-void nacrtaj_panoramu() {
+void draw_panorama() {
+
+
 	/* crtam dva kruga */
 	glColor3f(1, 0, 0);
 	for(float u = 0; u < 2*PI + EPS; u += PI/50)
@@ -20,13 +22,14 @@ void nacrtaj_panoramu() {
     	glVertex3f(0, 0, -1.5);
     glEnd();
 
-    /* _\ | /_
-        / | \
+    /* _\|/_
+        /|\
        crtam ove linija unutar krugova
        linije koje povezuju krajeve upravo nacrtanih linija
        i dodajem sedista 
+       uz pomoc panorama parametra vrsi se kretanje panorame
     */
-    for(float u = 0; u <= 2*PI; u += PI/10)
+    for(float u = panorama_parameter; u <= 2*PI + panorama_parameter; u += PI/10)
     {
     	glBegin(GL_LINES);
     		glVertex3f(5*cos(u), 5*sin(u), 1);
@@ -39,8 +42,9 @@ void nacrtaj_panoramu() {
     		glVertex3f(5*cos(u), 5*sin(u), -1);
     	glEnd();
 
-    	nacrtaj_sediste(5*cos(u), 5*sin(u));
+    	draw_seat(5*cos(u), 5*sin(u));
     }
+
 
     /* po dva trougla i po dva cetvorougla praveci drzace za krugove sa obe strane */
     glColor3f(0, 0, 1);
@@ -85,7 +89,7 @@ void nacrtaj_panoramu() {
     glEnd();
 }
 
-void nacrtaj_sediste(float x, float y) {
+void draw_seat(float x, float y) {
 	/* naslon za ledja */
 	glBegin(GL_POLYGON);
 		glColor3f(0, 0, 1);
@@ -119,3 +123,4 @@ void nacrtaj_sediste(float x, float y) {
 		glutSolidCube(1);
 	glPopMatrix();
 }
+
