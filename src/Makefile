@@ -3,5 +3,10 @@ CC      = gcc
 CFLAGS  = -Wall
 LDLIBS  = -lm -lglut -lGL -lGLU
 
-$(PROGRAM): main.o panorama.o worker.o
-	$(CC) -o $(PROGRAM) main.o panorama.o worker.o $(CFLAGS) $(LDLIBS)
+$(PROGRAM): panorama.o worker.o light.o main.o
+	$(CC) -o $(PROGRAM) panorama.o worker.o light.o main.o $(CFLAGS) $(LDLIBS)
+
+.PHONY: clean
+
+clean:
+	-rm *.o $(PROGRAM)
