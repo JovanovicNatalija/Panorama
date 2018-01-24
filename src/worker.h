@@ -1,3 +1,6 @@
+#ifndef WORKER_H
+#define WORKER_H
+
 #include <GL/glut.h>
 
 /* parametar za pomeranje ruke */
@@ -7,3 +10,5 @@ float worker_parameter;
 int up_down_hand;
 
 void draw_worker();
+
+#endif

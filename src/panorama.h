@@ -1,3 +1,6 @@
+#ifndef PANORAMA_H
+#define PANORAMA_H
+
 #include <math.h>
 #include <GL/glut.h>
 
@@ -9,4 +12,6 @@ float panorama_parameter;
 
 void draw_panorama();
 void draw_seat(float x, float y);
+
+#endif
 

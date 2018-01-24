@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include "panorama.h"
 #include "worker.h"
+#include "light.h"
 
 #define TIMER_ID 0
 #define TIMER_INTERVAL 20
@@ -17,7 +18,7 @@ int main(int argc, char** argv) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGB | GLUT_DEPTH | GLUT_DOUBLE);
 
-	glutInitWindowSize(300,300);
+	glutInitWindowSize(300, 300);
 	glutInitWindowPosition(100,100);
 	glutCreateWindow("panorama");
 
@@ -25,9 +26,11 @@ int main(int argc, char** argv) {
 	glutReshapeFunc(on_reshape);
 	glutDisplayFunc(on_display);
 
-	glClearColor(0.7, 0.7, 0.7, 0.7);
+	glClearColor(0, 0, 0, 0);
 	glEnable(GL_DEPTH_TEST);
 	glLineWidth(1.5);
+	glEnable(GL_COLOR_MATERIAL);
+	glEnable(GL_NORMALIZE);
     
 	glutMainLoop();
 
@@ -66,11 +69,14 @@ static void on_display(void) {
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    gluLookAt(0, -3.5, 10,
-              0, -3.5, 3, 
+    gluLookAt(10, 15, 30,
+              0, -3, 0, 
               0, 1, 0);
 
-    glTranslatef(0, 2, 0);
+    set_light1();
+    set_light2();
+    set_light3();
+    set_light4();
     draw_floor();
  	draw_panorama();
  	draw_worker();
@@ -113,7 +119,7 @@ static void on_timer(int value) {
 }
 
 void draw_floor() {
-	glColor3f(1, 1, 0);
+	glColor3f(0.33, 0.41, 0.2);
 	glBegin(GL_POLYGON);
 		glVertex3f(-7, -7, 7);
 		glVertex3f(7, -7, 7);
