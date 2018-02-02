@@ -1,5 +1,5 @@
 #ifndef PANORAMA_H
-#define PANORAMA_H
+#define PANORAMA_H 
 
 #include <math.h>
 #include <GL/glut.h>

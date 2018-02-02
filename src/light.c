@@ -1,5 +1,5 @@
 #include "light.h"
-
+ 
 /* parametri ambijentalnog, difuznog i spekularnog svetla */
 GLfloat ambient_light[] = {0.1, 0.1, 0.1, 1};
 GLfloat diffuse_light[] = {0.7, 0.7, 0.7, 1};

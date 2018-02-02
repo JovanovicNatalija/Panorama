@@ -1,5 +1,5 @@
 #include "panorama.h"
-
+ 
 
 void draw_panorama() {
     /* crtam dva kruga */
