@@ -1,4 +1,4 @@
-PROGRAM = main
+PROGRAM = panorama
 CC      = gcc
 CFLAGS  = -Wall
 LDLIBS  = -lm -lglut -lGL -lGLU
