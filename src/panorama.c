@@ -1,12 +1,12 @@
 #include "panorama.h"
 
+
 void draw_panorama() {
-
-
-	/* crtam dva kruga */
+    /* crtam dva kruga */
 	glColor3f(0.59, 0, 0.09);
 	for(float u = 0; u < 2*PI + EPS; u += PI/50)
     {
+        glNormal3f(30*sin(angle), 0, 30*cos(angle));
     	glBegin(GL_LINES);
     		glVertex3f(5*cos(u), 5*sin(u), 1);
     		glVertex3f(5*cos(u + PI/50), 5*sin(u + PI/50), 1);
@@ -22,15 +22,14 @@ void draw_panorama() {
     	glVertex3f(0, 0, -1.5);
     glEnd();
 
-    /* _\|/_
-        /|\
-       crtam ove linija unutar krugova
+    /* crtam linije koje povezuju centar kruga sa tackama na krugu,
        linije koje povezuju krajeve upravo nacrtanih linija
-       i dodajem sedista 
+       i dodajem sedista.
        uz pomoc panorama parametra vrsi se kretanje panorame
     */
-    for(float u = panorama_parameter; u <= 2*PI + panorama_parameter; u += PI/10)
-    {
+    for(float u = panorama_parameter; u < 2*PI + panorama_parameter; u += PI/10)
+    {   
+        glNormal3f(30*sin(angle), 0, 30*cos(angle));
         glColor3f(0.59, 0, 0.09);
     	glBegin(GL_LINES);
     		glVertex3f(5*cos(u), 5*sin(u), 1);
@@ -46,43 +45,51 @@ void draw_panorama() {
     	draw_seat(5*cos(u), 5*sin(u));
     }
 
-
     /* po dva trougla i po dva cetvorougla praveci drzace za krugove sa obe strane */
     glColor3f(0.34, 0.01, 0.1);
     glBegin(GL_TRIANGLES);
+        glNormal3f(0, 0, -1);
     	glVertex3f(0, 0, -1.5);
     	glVertex3f(-1, -7, -1.5);
     	glVertex3f(1, -7, -1.5);
 
+        glNormal3f(0, 0, 1);
     	glVertex3f(0, 0, -1);
     	glVertex3f(-1, -7, -1);
     	glVertex3f(1, -7, -1);
 
+        glNormal3f(0, 0, -1);
     	glVertex3f(0, 0, 1);
     	glVertex3f(-1, -7, 1);
     	glVertex3f(1, -7, 1);
 
+        glNormal3f(0, 0, 1);
     	glVertex3f(0, 0, 1.5);
     	glVertex3f(-1, -7, 1.5);
     	glVertex3f(1, -7, 1.5);
     glEnd();
 
     glBegin(GL_QUADS);
+        glNormal3f(7, 1, 0);
     	glVertex3f(0, 0, 1);
     	glVertex3f(0, 0, 1.5);
     	glVertex3f(1, -7, 1.5);
     	glVertex3f(1, -7, 1);
 
+
+        glNormal3f(-7, 1, 0);
     	glVertex3f(0, 0, 1);
     	glVertex3f(0, 0, 1.5);
     	glVertex3f(-1, -7, 1.5);
     	glVertex3f(-1, -7, 1);
 
+        glNormal3f(7, 1, 0);
     	glVertex3f(0, 0, -1);
     	glVertex3f(0, 0, -1.5);
     	glVertex3f(1, -7, -1.5);
     	glVertex3f(1, -7, -1);
 
+        glNormal3f(-7, 1, 0);
     	glVertex3f(0, 0, -1);
     	glVertex3f(0, 0, -1.5);
     	glVertex3f(-1, -7, -1.5);

@@ -8,6 +8,7 @@ GLfloat specular_light[] = {0.9, 0.9, 0.9, 1};
 void draw_reflector() {
 	/* crtam sam reflektor */
 	glColor3f(0.33, 0.41, 0.2);
+	glNormal3f(-2, 0, 1);
 	glBegin(GL_POLYGON);
 		glVertex3f(0.25, 2.5, 0.25);
 		glVertex3f(0.25, 2, 0.25);
@@ -15,6 +16,7 @@ void draw_reflector() {
 		glVertex3f(0.50, 3, 0.75);
 	glEnd();
 
+	glNormal3f(0, -1, 1);
 	glBegin(GL_POLYGON);
 		glVertex3f(0.25, 2.5, 0.25);
 		glVertex3f(0.50, 3, 0.75);
@@ -22,6 +24,7 @@ void draw_reflector() {
 		glVertex3f(-0.25, 2.5, 0.25);
 	glEnd();
 
+	glNormal3f(2, 0, 1);
 	glBegin(GL_POLYGON);
 		glVertex3f(-0.25, 2.5, 0.25);
 		glVertex3f(-0.50, 3, 0.75);
@@ -29,6 +32,7 @@ void draw_reflector() {
 		glVertex3f(-0.25, 2, 0.25);
 	glEnd();
 
+	glNormal3f(0, 1, 1);
 	glBegin(GL_POLYGON);
 		glVertex3f(-0.25, 2, 0.25);
 		glVertex3f(-0.50, 1.5, 0.75);

@@ -37,7 +37,7 @@ void draw_worker() {
 		glutSolidCube(2);
 	glPopMatrix();
 
-	/* crtam noge workera */
+	/* crtam noge worker-a */
 	glPushMatrix();
 		glColor3f(0.72, 0.53, 0.04);
 		glTranslatef(-0.75, -2, 0);
